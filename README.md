@@ -12,7 +12,7 @@ Téléchargez et dézippez : https://github.com/HerveHachesse/big-o-gym/archive
 
 Si vous avez un accès à une console avec git installé, vous pouvez directement vous placer dans le dossier et taper :
 
-git clone https://github.com/HerveHachesse/big-o-gym.git .
+`git clone https://github.com/HerveHachesse/big-o-gym.git .`
 
 ## Configuration
 ` `1- Création des tables :
