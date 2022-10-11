@@ -14,8 +14,10 @@ if($src=='etat'){
 // modif etat	
 		try{ 
 		
-		$sql = (isset($_POST['idcli'])) ? "UPDATE bg_clients SET etat = '$chk' WHERE client_id = $id" : "UPDATE bg_salles SET etat = '$chk' WHERE salle_id = $id";
+		$sql = (isset($_POST['idcli'])) ? "UPDATE bg_clients SET etat = ? WHERE client_id = ?" : "UPDATE bg_salles SET etat = ? WHERE salle_id = ?";
 		$req = $DB->prepare($sql);
+		$req->bindParam(1, $chk , PDO::PARAM_STR);		
+		$req->bindParam(2, $id, PDO::PARAM_INT);		
 		$req->execute();
 		
 		$msgtit = "Modification effectuée, ";
@@ -35,8 +37,10 @@ if($src=='etat'){
 // modif droits
 		try{
 		
-		$sql = (isset($_POST['idcli'])) ? "UPDATE bg_droits SET $src = $chkd WHERE client_id = $id" : "UPDATE bg_droits SET $src = $chkd WHERE salle_id = $id";
+		$sql = (isset($_POST['idcli'])) ? "UPDATE bg_droits SET $src = ? WHERE client_id = ?" : "UPDATE bg_droits SET $src = ? WHERE salle_id = ?";
 		$req = $DB->prepare($sql);
+		$req->bindParam(1, $chkd , PDO::PARAM_STR);		
+		$req->bindParam(2, $id, PDO::PARAM_INT);
 		$req->execute();
 		
 		$msgtit = "Modification effectuée, ";

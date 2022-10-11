@@ -53,8 +53,8 @@
             </div>
 
 
-            <div class="demo-options mdl-card mdl-color--deep-purple-500 mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--6-col-desktop">
-              <div class="mdl-card__supporting-text mdl-color-text--blue-grey-50">
+            <div class="demo-options mdl-card mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--6-col-desktop">
+              <div class="mdl-card__supporting-text">
                 <h5>Mes permissions par défaut:</h5>
 				
 						  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
@@ -123,12 +123,6 @@
 							</table>
 
               </div>
-
-              <div class="mdl-card__actions mdl-card--border">
-                <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--blue-grey-50">Changer</a>
-                <div class="mdl-layout-spacer"></div>
-                <i class="material-icons">location_on</i>
-              </div>
             </div>
 			
 			<div class="demo-options mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet mdl-cell--6-col-desktop">
@@ -139,7 +133,7 @@
 						  <li class="mdl-list__item">
 							<span class="mdl-list__item-primary-content">
 							  <i class="material-icons  mdl-list__item-avatar">public</i>
-							  <?php  echo $val["site_url"];  ?>
+							  Mon site web
 							</span>
 							<span class="mdl-list__item-secondary-action">
 								<button class="mdl-button mdl-js-button mdl-button--primary">

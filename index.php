@@ -3,41 +3,51 @@ session_start();
 if(!isset($_SESSION['_login']))
 {
 ?>
-<div class="wrapper">
-    <a href="admin/form.php" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored wrpbt" >session expirée <br> reconnectez-vous.</a>
+<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
+<div class="button">
+  <a href="admin/form.php" ><p>Utilisateur inconnu...<br><br> Reconnectez-vous SVP</p></a>
+  <div class="feedback"></div>
 </div>
 
 <style>
-.wrapper {
-    text-align: center;
-}
-.wrpbt {
-  position: absolute;
-  margin: 0 auto;
-  text-transform: uppercase;
-  vertical-align:middle;
-  top: 50%;
-  font-size:25px;
-  font-family:Arial;
-  line-height: 120px;
-  width:340px;
-  height:250px;
-  border-width:1px;
-  color:#fff;
-  border-color:#566963;
-  font-weight:bold;
-  border-top-left-radius:5px;
-  border-top-right-radius:5px;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
-  box-shadow:inset 0px 1px 3px 0px #91b8b3;
-  text-shadow:inset 0px -1px 0px #2b665e;
-  background:linear-gradient(#768d87, #6c7c7c);
-}
+.button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 4px 0;
+    width: 250px;
+    overflow: hidden;
+    user-select: none;
+    background-color: #607d8b;
+	}
+	.button:hover {
+        cursor: pointer;
+    }
+    a:link {		
+	text-decoration: none;
+	}
 
-.wrpbt:hover {
-  background: linear-gradient(#6c7c7c, #768d87);
-}
+	p {
+        font-family: 'Roboto';
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+
+    }
+    .feedback {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background-color: rgba(#fff, 0.5);
+        left: 0;
+        top: 0;
+        border-radius: 50%;
+        margin-left: - 250px;
+        margin-top: - 250px;
+        transform: scaleX(0) scaleY(0);
+    }
 </style>
 	
 <?php	
@@ -49,11 +59,11 @@ $page=(isset($_GET['page'])) ? $_GET['page'] : 'accueil';
 	// prepare table tempo users
     $sql ="
 	CREATE TEMPORARY TABLE membres
-	SELECT 'client' AS type, a.client_id AS id, a.client_mail AS email, a.user_pwd AS passwd , b.perms_id FROM bg_clients a, bg_droits b WHERE a.client_id = b.client_id 
+	SELECT 'client' AS type, a.client_id AS id, a.client_nom AS name, a.logo_url AS logo, a.client_mail AS email, a.user_pwd AS passwd , b.perms_id FROM bg_clients a, bg_droits b WHERE a.client_id = b.client_id 
 	UNION 
-	SELECT 'salle' AS type, c.salle_id AS id, c.mail_gerant AS email, c.user_pwd AS passwd, d.perms_id FROM bg_salles c, bg_droits d WHERE c.salle_id = d.salle_id
+	SELECT 'salle' AS type, c.salle_id AS id, c.salle_nom AS name, c.logo_url AS logo, c.mail_gerant AS email, c.user_pwd AS passwd, d.perms_id FROM bg_salles c, bg_droits d WHERE c.salle_id = d.salle_id
 	UNION
-	SELECT 'admin' AS type, e.admin_id AS id, e.admin_mail AS email, e.user_pwd AS passwd, f.perms_id FROM bg_admins e, bg_droits f WHERE e.admin_id = f.admin_id";
+	SELECT 'admin' AS type, e.admin_id AS id, e.admin_mail AS name, '' AS logo, e.admin_mail AS email, e.user_pwd AS passwd, f.perms_id FROM bg_admins e, bg_droits f WHERE e.admin_id = f.admin_id";
 	$req = $DB->prepare($sql);
     $req->execute();	
 	
@@ -65,6 +75,8 @@ $page=(isset($_GET['page'])) ? $_GET['page'] : 'accueil';
     $res = $req->fetchAll(PDO::FETCH_ASSOC);
 	$idperms = $res[0]["perms_id"];
 	$iduser = $res[0]["id"];
+	$nom= $res[0]["name"];
+	$logo= $res[0]["logo"];
 // recup droits en BDD
     $sql = "SELECT * FROM bg_droits WHERE perms_id = :perms";
 	$req1 = $DB->prepare($sql);
@@ -105,7 +117,7 @@ if(($_SESSION['_role'])=='client')
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
-    <link rel="stylesheet" href="styles_demo.css">
+    <link rel="stylesheet" href="styles_front.css">
 
   </head>
   <body>
@@ -137,9 +149,10 @@ if(($_SESSION['_role'])=='client')
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="demo-drawer-header">
-          <img src="images/user.jpg" class="demo-avatar">
+		  <img class="demo-avatar" src="<?php echo $logo; ?>">
+          
           <div class="demo-avatar-dropdown">
-            <span><?php echo($_SESSION['_login']); ?></span>
+            <span><?php echo $nom ;?></span>
             <div class="mdl-layout-spacer"></div>
             <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
               <i class="material-icons" role="presentation">arrow_drop_down</i>

@@ -25,9 +25,11 @@ $req1 = $DB->query('SELECT * FROM bg_clients '.$clause.' ORDER BY client_nom ASC
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BIGoGYM Administration</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-red.min.css" />
 	<link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="../styles.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+	
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -178,7 +180,7 @@ $req1 = $DB->query('SELECT * FROM bg_clients '.$clause.' ORDER BY client_nom ASC
 				orderable: false
 			},
 			{
-				className: 'dt-control',
+				className: 'dtr-control',
 				targets:   5
 			} ],
         order: [[2, 'asc']],
