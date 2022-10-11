@@ -1,9 +1,9 @@
 <?php
 // Paramètres persos
-$host = "xxxx"; // voir hébergeur
-$user = "xxxx"; // vide ou "root" en local
-$pass = "xxxx"; // vide en local
-$bdd = "xxxx"; // nom de la BD
+$host = ""; // voir hébergeur
+$user = ""; // vide ou "root" en local
+$pass = ""; // vide en local
+$bdd = ""; // nom de la BD
 
 // connexion
 try {

@@ -56,7 +56,7 @@ if (!empty($_POST['login']) && !empty($_POST['mdp'])) {
 			$msgok = 'Mot de passe modifié. Connectez-vous';
 		}
 	}
-}
+}// envoi des messages retour 
 $feed = array('success'=>true, 'action'=>$action, 'message'=>$msgok, 'titre'=>$msgtit);		
 echo json_encode($feed); 
 ?>

@@ -32,7 +32,7 @@ $mdpasse = $_GET['mdpasse'];
 		<title>BigOgym</title>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css" />
-		<link rel="stylesheet" href="../styles.css">
+		<link rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 	<div class="mdl-layout mdl-js-layout mdl-color--grey-100">

@@ -1,0 +1,253 @@
+@charset"UTF-8";
+/* GOOGLE FONT ROBOTO */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html, body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+.mdl-layout__tab-bar-container {
+	background-color: #114d61;
+}
+
+.mdl-switch.is-checked .mdl-switch__thumb {
+    background: #31b131;
+}
+.mdl-radio {
+    margin-right: 20px;
+}
+.hidden {
+	display:none;
+}
+#menu-top {
+    z-index: 1000;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.mdl-badge.mdl-badge--overlap {
+    color: #31b131;
+}
+.mdl-badge.mdl-badge--overlap:after {
+    right: -15px;
+	top: -10px;
+}
+.toggle-icon-green{
+	color: #31b131;
+}
+.toggle-icon-red{
+	color: #d1bdbb;
+}
+.mdl-data-table {
+	width: 100%;
+}
+.id_top {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    font-size: 12px;
+    color: #4e4747;
+}
+.mdl-dialog__title {
+    text-align: center;
+    color: #ad2020;
+	font-size: 2rem;
+    font-weight: 600;
+}
+.mdl-dialog__content p {
+    color: #0f4557;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    margin-top: 5px;
+}
+.personnel{
+	line-height: 35px;
+    list-style-type: none;
+}
+.personnel i{
+	vertical-align: middle;
+    color: #114d61;
+	margin-right: 5px;
+}
+#formul{
+	position:relative;
+	display:none;
+}
+#closeform {
+    position: absolute;
+    right: 20px;
+    top: -20px;
+}
+.msglogin{
+    background-color: red;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+	margin:0;
+	padding: 2px;
+}
+.mdl-badge[data-badge]:after {
+    background: rgb(49,177,49);
+    color: rgb(255,255,255);
+}
+.nav{
+	cursor: pointer;
+}
+.mdl-chip--deletable {
+    position: absolute;    
+	width: fit-content;
+    right: 20px;
+    bottom: 9px;
+}
+#voirmail{
+	display:none;
+}
+#voirmail i{
+	color:#114d61;
+}
+#lemail{
+	display:none;
+	margin: 0 auto;
+    padding: 2%;
+}
+.mdl-tooltip{
+font-size: 14px;
+    text-transform: uppercase;	
+}
+
+
+@media screen and (min-width: 1024px) {
+	.mdl-layout__content {
+    width: 60%;
+	margin: 0 auto;
+	}
+	.mdl-layout--fixed-tabs .mdl-layout__tab-bar {
+	margin: 0 auto;
+    width: 1024px;
+	}
+	.dt-control:before {
+		content:"";
+	}
+	.maxline {
+	max-width: 150px;
+    white-space: normal;
+	}
+}
+
+.mdl-textfield__label:after {
+    background-color: rgb(50, 199, 66);
+}
+
+.mdl-navigation__link {
+    color: #FFF;
+    text-decoration: none;
+    margin: 15px 10px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    opacity: .87;
+}
+
+.mdl-layout__tab {
+    height: 58px;
+    line-height: 58px;
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(255,255,255,.8);
+    background-color: #114d61;	
+}
+.mdl-layout__tab:hover {
+    color: rgba(255,255,255,1);
+}
+
+.mdl-layout__tab-bar {
+    height: 58px;
+}
+
+.au-centre {
+text-align: center;
+margin: 0 auto;
+}
+
+.logo {
+position:absolute;
+top:10px;
+left:100px;
+width: 193px;
+height: 70px;
+background-image: url(images/logo.webp);
+background-size: cover;
+}
+
+.tri {
+color: rgba(0,0,0, 0.5);
+text-decoration: none;
+}
+.tri:hover {
+color: rgba(0,0,0, 0.8);
+}
+
+.navtab{
+	position: absolute;
+    margin-top: -2px;
+	width:calc(100% - 16px);
+    z-index: 1;
+	display:none;	
+}
+.navtab .material-icons{
+    margin: 0px;
+    color: #ffffff78;	
+}
+
+.navtab .nav-right{
+	float:right;
+}
+ 
+.mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent{
+    color: #fff;
+    background-color: #114d61;
+}
+
+.background-color--grey {
+background-color: #eee;
+}
+
+.mdl-textfield__label{
+color: #444;
+}
+.mdl-textfield__input{
+color: #424242;
+}
+
+.mdl-layout__header{
+min-height: 48px;
+background-color: rgb(245, 245, 245);
+}
+.mdl-layout__tab-bar-button , .mdl-layout__tab-bar {
+background-color: #114d61;
+max-width: 90%;
+}
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
+background: rgb(168, 24, 21);
+height:12px;
+}
+
+input:-webkit-autofill{
+background-color: #fff;
+}
+
+
+/************ DATATABLES *****************/
+
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+    opacity: 0.9;
+}
+table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after {
+    opacity: 1;
+    color: #d50000;
+}
+table.dataTable.dtr-column>tbody>tr>td.dtr-control:before, table.dataTable.dtr-column>tbody>tr>th.dtr-control:before, table.dataTable.dtr-column>tbody>tr>td.control:before, table.dataTable.dtr-column>tbody>tr>th.control:before {
+    line-height: .9em;
+}
