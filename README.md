@@ -1,16 +1,18 @@
+<img align="right" width="250" height="100" src="https://user-images.githubusercontent.com/105589603/195117884-51c482e7-115a-40ae-81a3-52a916e20ca3.png">
+
 # Big-O-Gym
 ## Description
-Big-O-Gym est une application PHP/ Javascript/ MySQL  permettant de gérer des droits d’accès aux modules d’une API  tierce. Ce programme est crée dans le cadre d’un test de formation Web  et destiné à un public d’administrateurs de site.
+Big-O-Gym est une application PHP/ JQ / MySQL  permettant de gérer des droits d’accès aux modules d’une API  tierce. Ce programme est crée dans le cadre d’un test de formation Web  et destiné à un public d’administrateurs de site.
 ## Prérequis
 PHP 5.5.9 ou supérieur, avec les extensions  JSON. PHP 7.2 recommandé
 
 Base MySQL avec les droits d’administration
 ## Installation
-Téléchargez et dézippez <https://github.com>
+Téléchargez et dézippez : https://github.com/HerveHachesse/big-o-gym/archive/refs/heads/main.zip
 
 Si vous avez un accès à une console avec git installé, vous pouvez directement vous placer dans le dossier et taper :
 
-git clone https://github.com/ .
+git clone https://github.com/HerveHachesse/big-o-gym.git .
 
 ## Configuration
 ` `1- Création des tables :
@@ -24,14 +26,14 @@ Vous trouverez sur votre serveur web dans le dossier /admin le fichier config.ph
 Vous devriez pouvoir à présent vous logger avec l’identifiant administrateur par défaut.
 
 ## Utilisation  Administrateur
-PAGE CLIENTS
+**PAGE CLIENTS**
 
 Une fois connecté Administrateur, vous accédez à la liste des clients. Elle affiche par défaut tous les clients, actifs ou non, dans un tableau paginé qui permet en outre une recherche dynamique et un tri des colonnes. Les colonnes « client » et « état » sont ordonnables via un clic sur les flèches en en-tête.
 
 L’état du client (actif/Inactif) est représenté par un switch, vert ou grisé si inactif. Son nom, logo et nombre de salles associées sont aussi présents. Le bouton de sélection en début de colonne permet d’accéder à la fiche client. Une pagination du tableau est disponible en bas de page. Un clic sur le bouton de sélection en début de colonne permet d’accèder aux détails du client.
 
 
-PAGE CLIENT
+**PAGE CLIENT**
 
 Elle permet d’accéder à tous les détails d’un client et d’effectuer les modifications d’état ou de permissions demandés. Les informations disponibles sont réparties dans 3 onglets : Personnel/ Détails / Permissions. Le menu est un fil d’Ariane navigable qui permet de revenir sur l’écran précédent.
 
@@ -41,7 +43,7 @@ Le bouton « ajouter une salle » permet l’ouverture d’un court formulaire
 
 La liste des salles associées à ce client et ses informations sont affichées en bas de page. Les états actif/inactif sont aussi repris pour chaque salle. On accède aux détails d’une salle via un clic sur le bouton sélection.
 
-PAGE SALLES
+**PAGE SALLES**
 
 Elle reprend les infos nom, id et logo et on décline le reste sur deux onglets : les informations salle et gérant, et les permissions de la salle.
 
@@ -53,17 +55,17 @@ Le bouton supprimer n’est pas actif.
 ## Vision Utilisateurs
 **\* connectez-vous en tant que client ou gérant pour profiter de ces vues. \***
 
-PAGE ACCUEIL
+**PAGE ACCUEIL**
 
 Une fois connecté Utilisateur, vous accédez à la page d’accueil  qui affiche par défaut des informations commerciales.
 
-PAGE INFOS
+**PAGE INFOS**
 
-On retrouve  son état client (actif/Inactif) représenté par un switch ainsi que son nom, logo et nombre de salles associées. Les permissions courantes sont visibles mais non modifiables.
+On retrouve son état client (actif/Inactif) représenté par un switch ainsi que son nom, logo et nombre de salles associées. Les permissions courantes sont visibles mais non modifiables.
 
-PAGE SALLES
+**PAGE SALLES**
 
 On retrouve ses salles sous forme de cartes avec les les infos nom, id et logo et on décline le reste sur deux onglets : les informations salle et gérant, et les permissions de la salle.
 
 ## Terminé
-Créez des clients, des salles et testez les capacités de l’appli sur différents supports… Merci de votre lecture.
+Créez des clients, des salles et testez les capacités de l’appli sur différents supports… Merci pour votre lecture.
