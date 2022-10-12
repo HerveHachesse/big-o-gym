@@ -95,7 +95,7 @@ $req11 = $DB->query('SELECT * FROM bg_droits WHERE client_id='.$id);
 						  <div class="mdl-tabs__tab-bar">
 							  <a href="#perso" class="mdl-tabs__tab is-active">personnel</a>
 							  <a href="#descrip" class="mdl-tabs__tab">détails</a>
-							  <a href="#perm" class="mdl-tabs__tab">permissions</a>
+							  <a href="#perms" class="mdl-tabs__tab">permissions</a>
 						  </div>
 
 						  <div class="mdl-tabs__panel is-active" id="perso">
@@ -116,7 +116,7 @@ $req11 = $DB->query('SELECT * FROM bg_droits WHERE client_id='.$id);
 							$idperms=$val["perms_id"];
 						?>
 						
-						  <div class="mdl-tabs__panel" id="perm">
+						  <div class="mdl-tabs__panel" id="perms" data-val="<?php echo $val["perms_id"]; ?>">
 
 						  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 							  <tbody>
@@ -259,8 +259,8 @@ $req11 = $DB->query('SELECT * FROM bg_droits WHERE client_id='.$id);
 			?>   
 							<tr>
 							  <td class="mdl-data-table__cell--non-numeric">
-								<i id="tt0" class="material-icons nav" data-url="salle.php?id=<?php echo $val["salle_id"]; ?>">check_box_outline_blank</i>
-								<div class="mdl-tooltip" data-mdl-for="tt0">voir la salle</div>
+								<i id="ttp<?php echo $val["salle_id"]; ?>" class="material-icons nav" data-url="salle.php?id=<?php echo $val["salle_id"]; ?>">check_box_outline_blank</i>
+								<div class="mdl-tooltip" data-mdl-for="ttp<?php echo $val["salle_id"]; ?>">voir la salle</div>
 							  </td>
 							  <td class="mdl-data-table__cell--non-numeric maxline"><?php  echo $val["salle_nom"];  ?></td>
 							  <td><?php  echo $val["nom_gerant"];  ?></td>
@@ -271,7 +271,7 @@ $req11 = $DB->query('SELECT * FROM bg_droits WHERE client_id='.$id);
 						  </tbody>
 						</table>			
         </main>
-		
+<!--------------------- dialog ----------------------------->
 		<dialog class="mdl-dialog">
 			<h4 class="mdl-dialog__title">ATTENTION</h4>
 			<div class="mdl-dialog__content">
@@ -284,7 +284,7 @@ $req11 = $DB->query('SELECT * FROM bg_droits WHERE client_id='.$id);
 			  <button type="button" class="mdl-button close">annuler</button>
 			</div>
 		</dialog>
-		<!------------------ snack bar ---------------------------->
+<!------------------ snack bar ---------------------------->
 		<div class="mdl-js-snackbar mdl-snackbar">
 		  <div class="mdl-snackbar__text au-centre snack-mess"></div>
 		  <button class="mdl-snackbar__action" type="button"></button>
@@ -365,11 +365,12 @@ $(function(){
 	$(document).on('click','.confirm',function(e){
 		e.preventDefault();
 		var id =$(this).attr("id");
+		var idperms=$("#perms").attr("data-val");
 		var src =$(this).attr("for");
 		var chk = $("#"+src).is(":checked");
 		var tglb = $(this).attr("data-tglb");
 		var fd = new FormData();
-		fd.append("act", "mod");
+		fd.append("idperms", idperms);
 		fd.append("idcli", id);
 		fd.append("src", src);		
 		fd.append("chk", chk);
@@ -435,7 +436,7 @@ $(function(){
 				var titr= data.titre;
 				$('.mdl-snackbar__action').trigger('click');
 				notification.MaterialSnackbar.showSnackbar(
-				{ message: titr+msg,	timeout: 5000 }
+				{ message: titr+msg,timeout: 8000 }
 				);	
 				
 			}

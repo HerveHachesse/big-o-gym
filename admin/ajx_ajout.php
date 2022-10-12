@@ -15,18 +15,16 @@ $idperms=$_POST['idperms'];
 $mailge=$_POST['mail'];
 $mailcli=$_POST['mailcli'];
 
-//$mailge="nicolas.durand@unicod.fr";
-$mailcli="nicolas.durand@unicod.fr";
 $msgok = "";
 // Génération aléatoire d'une clé/mdp
 $mdp=password_hash($mailge, PASSWORD_DEFAULT);
 
-$sql = "SELECT * from bg_salles WHERE mail_gerant = $mailge";
-$req = $DB->prepare($sql);
-$req->execute();
-$res = $req->fetch();
+// TODO - VERIF EXIST LOGIN
+//$sql = "SELECT * from bg_salles WHERE mail_gerant = $mailge";
+//$req = $DB->prepare($sql);
+//$req->execute();
 
-if (!$res) {
+if (!$req) {
 
 // écriture en BDD	
 	try{ 
@@ -63,8 +61,8 @@ if (!$res) {
 			$req2->bindParam(':idperms', $newperms);
 			$result2 = $req2->execute();
 	
-			$msgtit = "";
-			$msgok = "Nouvelle salle ajoutée. Mails envoyés au client et au gérant";
+			$msgtit = "Nouvelle salle ajoutée. ";
+			$msgok = " Mails envoyés au client et au gérant";
 		} 
 		catch(PDOException $exception){ 
 		    $error = $exception->getMessage();
@@ -116,11 +114,8 @@ if (!$res) {
 		mail($destinataire, $sujet, $message, $entete) ; // envoi mail
 
 }else{
-	
+	$msgtit = " ERREUR ! -> ";	
 	$msgok = "Cet identifiant existe déjà!";
-	$feed = array('success'=>true, 'action'=>'refresh', 'message'=>$msgok, 'titre'=>count($res));		
-	echo json_encode($feed);
-	exit();
 }		
 			$feed = array('success'=>true, 'action'=>'refresh', 'message'=>$msgok, 'titre'=>$msgtit);		
 			echo json_encode($feed);

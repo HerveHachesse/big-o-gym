@@ -50,10 +50,18 @@ if (!empty($_POST['login']) && !empty($_POST['mdp'])) {
 
 		if (($chkpass) && !empty($_POST['newmdp'])) { // si mdp OK et demande nouveau pass
 		$newmdp=password_hash($_POST['newmdp'], PASSWORD_DEFAULT);
-			$sql = "UPDATE bg_$table set user_pwd = '$newmdp' WHERE $champ = $id";
+		
+		$champs = ['salle_id','client_id','admin_id'];
+		$tables = ['clients','salles','admins'];
+		$table =(in_array($table, $tables)) ? $table : NULL; // evitons l'injection sur cette var non bindParam-able en PDO
+		$champ =(in_array($champ, $champs)) ? $champ : NULL; // idem
+			$sql = "UPDATE bg_$table set user_pwd = ? WHERE $champ = ?";
 			$req = $DB->prepare($sql);
+			$req->bindParam(1, $newmdp , PDO::PARAM_STR);		
+			$req->bindParam(2, $id, PDO::PARAM_INT);
 			$req->execute();
 			$msgok = 'Mot de passe modifié. Connectez-vous';
+			$action='refresh';
 		}
 	}
 }// envoi des messages retour 
