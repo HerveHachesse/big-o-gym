@@ -180,7 +180,9 @@ height: 70px;
 background-image: url(images/logo.webp);
 background-size: cover;
 }
-
+.logo-td {
+max-width: 50px;
+}
 .tri {
 color: rgba(0,0,0, 0.5);
 text-decoration: none;
@@ -233,7 +235,6 @@ max-width: 90%;
 background: rgb(168, 24, 21);
 height:12px;
 }
-
 input:-webkit-autofill{
 background-color: #fff;
 }

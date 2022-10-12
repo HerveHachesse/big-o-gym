@@ -49,29 +49,29 @@ $mdpasse = $_GET['mdpasse'];
 					<div class="mdl-card__supporting-text">
 
 						<div class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="text" id="login" name="login" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" value="<?php if(isset($_GET['usr'])) echo $user ?>"/>
+							<input class="mdl-textfield__input" type="text" id="login" name="login" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" value="<?php if(isset($_GET['usr'])) echo $user ?>" required />
 							<label class="mdl-textfield__label" for="login">Utilisateur</label>
 						</div>
 						<div class="mdl-textfield mdl-js-textfield">
-							<input class="mdl-textfield__input" type="password" id="mdp" name="mdp" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" value="<?php if(isset($_GET['mdpasse'])) echo $mdpasse ?>"/>
+							<input class="mdl-textfield__input" type="password" id="mdp" name="mdp" readonly onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly','');" value="<?php if(isset($_GET['mdpasse'])) echo $mdpasse ?>" required/>
 							<label class="mdl-textfield__label" for="mdp">Mot de passe</label>
 						</div>
 						
 						<div id="chngpass" <?php if(!isset($_GET['mdpasse'])) echo "style='display:none'"?>>
 							<div class="mdl-textfield mdl-js-textfield">
-								<input class="mdl-textfield__input" type="newpassword" id="newmdp" name="newmdp"/>
+								<input class="mdl-textfield__input" type="newpassword" id="newmdp" name="newmdp" required />
 								<label class="mdl-textfield__label" for="newmdp">Nouveau mot de passe</label>
 							</div>
 							
 							<div class="mdl-textfield mdl-js-textfield">
-								<input class="mdl-textfield__input" type="confpassword" id="confmdp" name="confmdp"/>
+								<input class="mdl-textfield__input" type="confpassword" id="confmdp" name="confmdp" required/>
 								<label class="mdl-textfield__label" for="confmdp">Confirmer le nouveau mot de passe</label>
 							</div>
 						</div>
 					</div>
 				
 					<div class="mdl-card__actions mdl-card--border">
-						<button type="submit" id="recform" class="mdl-button mdl-button--colored mdl-js-button">Connexion</button>
+						<button type="submit" id="recform" class="mdl-button mdl-button--colored mdl-js-button" disabled>Connexion</button>
 						
 					</div>
 			
@@ -90,6 +90,25 @@ $mdpasse = $_GET['mdpasse'];
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 	
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 <script>
+/********** listen changements form ***************/ 
+$(function(){
+	
+		$(document).on('change','.mdl-textfield__input',function(){
+			var $invalidFields = $('#form .is-invalid');
+			var $emptyFields = $('#form input:required').filter(function() {		
+				return $.trim(this.value) === "";
+			});
+				if ((!$emptyFields.length) && (!$invalidFields.length) === true) {
+					$("#recform").prop('disabled', false);
+					$("#recform").addClass("mdl-button--colored");					
+					componentHandler.upgradeAllRegistered();
+				}else{
+					$("#recform").prop('disabled', true);
+					$("#recform").removeClass("mdl-button--colored");
+					componentHandler.upgradeAllRegistered();
+				}
+		});
+});
 
 function validatePassword() {
 	var currentPassword, newPassword, confirmPassword, output = true;

@@ -1,6 +1,6 @@
 <?php
 // Paramètres persos
-$host = ""; // voir hébergeur
+$host = ""; // voir hébergeur ou localhost en local
 $user = ""; // vide ou "root" en local
 $pass = ""; // vide en local
 $bdd = ""; // nom de la BD

@@ -1,56 +1,9 @@
 <?php
+// verif sessions
 session_start();
 if(!isset($_SESSION['_login']))
 {
-?>
-<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
-<div class="button">
-  <a href="admin/form.php" ><p>Utilisateur inconnu...<br><br> Reconnectez-vous SVP</p></a>
-  <div class="feedback"></div>
-</div>
-
-<style>
-.button {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    padding: 4px 0;
-    width: 250px;
-    overflow: hidden;
-    user-select: none;
-    background-color: #607d8b;
-	}
-	.button:hover {
-        cursor: pointer;
-    }
-    a:link {		
-	text-decoration: none;
-	}
-
-	p {
-        font-family: 'Roboto';
-        font-size: 16px;
-        color: #fff;
-        text-align: center;
-        text-transform: uppercase;
-
-    }
-    .feedback {
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        background-color: rgba(#fff, 0.5);
-        left: 0;
-        top: 0;
-        border-radius: 50%;
-        margin-left: - 250px;
-        margin-top: - 250px;
-        transform: scaleX(0) scaleY(0);
-    }
-</style>
-	
-<?php	
+	header("location: admin/form.php");
     die();
 }
 
@@ -118,7 +71,24 @@ if(($_SESSION['_role'])=='client')
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
     <link rel="stylesheet" href="styles_front.css">
-
+<script>
+// Advanced caching
+// Check compatibility for the browser we're running this in
+if ("serviceWorker" in navigator) {
+  if (navigator.serviceWorker.controller) {
+    //console.log("[PWA Builder] active service worker found, no need to register");
+  } else {
+    // Register the service worker
+    navigator.serviceWorker
+      .register("pwabuilder-sw.js", {
+        scope: "./"
+      })
+      .then(function (reg) {
+        //console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+      });
+  }
+}
+</script>
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">

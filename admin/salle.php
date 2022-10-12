@@ -76,11 +76,11 @@ $req1 = $DB->query('SELECT * FROM bg_salles a, bg_droits b WHERE a.salle_id=b.sa
 						
 						<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 						  <div class="mdl-tabs__tab-bar">
-							  <a href="#personnel" class="mdl-tabs__tab is-active">personnel</a>
-							  <a href="#permissions" class="mdl-tabs__tab">permissions</a>
+							  <a href="#perso" class="mdl-tabs__tab is-active">personnel</a>
+							  <a href="#perms" class="mdl-tabs__tab">permissions</a>
 						  </div>
 
-						  <div class="mdl-tabs__panel is-active" id="personnel">
+						  <div class="mdl-tabs__panel is-active" id="perso">
 							<ul>
 							  <li class="personnel"><i class="material-icons">person</i> <?php  echo $val["nom_gerant"];  ?></li>
 							  <li class="personnel"><i class="material-icons">email</i>  <?php  echo $val["mail_gerant"];  ?></li>
@@ -88,7 +88,7 @@ $req1 = $DB->query('SELECT * FROM bg_salles a, bg_droits b WHERE a.salle_id=b.sa
 							</ul>
 						  </div>
 
-						  <div class="mdl-tabs__panel" id="permissions">
+						  <div class="mdl-tabs__panel" id="perms" data-val="<?php echo $val["perms_id"]; ?>">
 					
 						  <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 							  <tbody>
@@ -159,9 +159,9 @@ $req1 = $DB->query('SELECT * FROM bg_salles a, bg_droits b WHERE a.salle_id=b.sa
 						</div>						
 					  
 					  <div class="mdl-card__actions mdl-card--border">
-						<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+						<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" disabled>
 						  supprimer cette salle
-						</a>
+						</button>
 					  </div>
 					  <div class="mdl-card__menu">
 							<label id="tt1" data-src="salle" data-val=<?php echo $val["salle_id"]; ?> for="etat" class="mdl-switch mdl-js-switch mdl-js-ripple-effect toggle-icon-<?php echo $coul ?> modal">
@@ -218,6 +218,7 @@ $req1 = $DB->query('SELECT * FROM bg_salles a, bg_droits b WHERE a.salle_id=b.sa
 
 // snackbar config 	
 	var notification = document.querySelector('.mdl-js-snackbar');
+	var msg1, titr;
 	
 // dialogue confirmation
 $(function(){
@@ -245,16 +246,17 @@ $(function(){
 	});
 });
 
-// change perms
+// change etat ou perms
 $(function(){
 	$(document).on('click','.confirm',function(e){
 		e.preventDefault();
 		var id =$(this).attr("id");
+		var idperms=$("#perms").attr("data-val");
 		var src =$(this).attr("for");
 		var chk = $("#"+src).is(":checked");
 		var tglb = $(this).attr("data-tglb");
 		var fd = new FormData();
-		fd.append("act", "mod");
+		fd.append("idperms", idperms);
 		fd.append("idsal", id);
 		fd.append("src", src);		
 		fd.append("chk", chk);
@@ -276,8 +278,8 @@ $(function(){
 						$('#'+tglb)[0].MaterialSwitch.on();
 					}
 				componentHandler.upgradeAllRegistered();
-				var msg1= data.message;
-				var titr= data.titre;
+				msg1= data.message;
+				titr= data.titre;
 				$('.mdl-snackbar__action').trigger('click');
 				notification.MaterialSnackbar.showSnackbar(
 				{ message: titr+msg1,	timeout: 3000 }

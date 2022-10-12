@@ -21,7 +21,7 @@ $req1 = $DB->query('SELECT * FROM bg_clients '.$clause.' ORDER BY client_nom ASC
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
+    <meta name="description" content="Admin B-O-G">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BIGoGYM Administration</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -97,17 +97,17 @@ $req1 = $DB->query('SELECT * FROM bg_clients '.$clause.' ORDER BY client_nom ASC
 		 ?>
 			<tr>
 			<td class="">
-				<i id="tt0" class="material-icons nav" data-url="client.php?id=<?php echo $val["client_id"]; ?>">check_box_outline_blank</i>
-				<div class="mdl-tooltip" data-mdl-for="tt0">voir ce client</div>
+				<i id="tt<?php echo $val["client_id"]; ?>" class="material-icons nav" data-url="client.php?id=<?php echo $val["client_id"]; ?>">check_box_outline_blank</i>
+				<div class="mdl-tooltip" data-mdl-for="tt<?php echo $val["client_id"]; ?>">voir ce client</div>
 			</td>
 			<td class="mdl-data-table__cell--non-numeric">
-				<img src="<?php  echo $val["logo_url"];  ?>" width="50px" height="35px">
+				<img class="logo-td" alt="logo-<?php  echo $val["client_nom"];  ?>" src="<?php  echo $val["logo_url"];  ?>">
 			</td>
 			<td class="mdl-data-table__cell--non-numeric" style="min-width: 50px;">
 				<?php  echo $val["client_nom"];  ?><br>ID: <?php  echo $val["client_id"];  ?>
 			</td>
 			<td class="mdl-data-table__cell--non-numeric" style="padding:15px 10px 0 10px;">
-			<span id="tt1" class="mdl-badge" data-badge="<?php echo $nbsalles;?>"></span>
+			<span id="tts" class="mdl-badge" data-badge="<?php echo $nbsalles;?>"></span>
 			</td>
 			
 			<td>
